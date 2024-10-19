@@ -61,6 +61,7 @@ const History = () => {
                 <Banner />
                 <Modal
                     header={<ModalHeader>Withdraw</ModalHeader>}
+                    className='modal__block'
                     trigger={<Button
                         mode="filled"
                         size="l"
