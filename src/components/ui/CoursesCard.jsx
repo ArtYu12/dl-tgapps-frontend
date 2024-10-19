@@ -34,7 +34,7 @@ const CoursesCard = ({ title, percent = null, img, price = null, status, id }) =
                             ? <div style={{ fontSize: "12px", display: "flex", gap: "5px", color: "procent-green" }}>
                                 <Icon12Download /> Claim SBT 
                               </div> 
-                            : <>{percent.toFixed(0)}%</>
+                            : <>{percent === null ? 0 : percent?.toFixed(0)}%</>
                     }
                 </span>
             </div>

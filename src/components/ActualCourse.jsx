@@ -49,13 +49,10 @@ const ActualCourse = ({ modules, progress, loading, setLoading, id, unfinishedMo
                     <List style={{ padding: "0px" }}>
                         {modules.map((module, index) => {
                             const isUnfinished = index === progress
-
-                            
-
                             return (
                                 <Cell
                                     key={module.id}
-                                    onClick={() => handleModuleClick(module, index)}
+                                    onClick={() => index === progress && handleModuleClick(module, index)}
                                     disabled={index > progress}
                                     titleBadge={isUnfinished && <Badge type="dot" />}
                                     before={`${index + 1}. `}

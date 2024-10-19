@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { userAPI } from "../../api/userAPI/service"
 import { useNotification } from "../../helpers/Notificathions"
-import { Button, Cell, List, Radio } from "@telegram-apps/telegram-ui"
+import { Button, Cell, List, Placeholder, Radio } from "@telegram-apps/telegram-ui"
 import Loader from "../../helpers/Loader"
 import { Link } from "react-router-dom"
 
@@ -69,12 +69,11 @@ const TestPage = () => {
 
     return (
         <List>
-
-            {testData.map((question, index) => (
+            {testData.length > 0 ? testData.map((question, index) => (
                 <div key={question.id} className="question-block">
                     <p className="question page-title">{`Question ${index + 1}: ${question.question}`}</p>
 
-                    <form className={'answer-list'}>
+                    <div className={'answer-list'}>
                         {question.answers.map((answer) => (
                             <Cell
                                 key={answer.id}
@@ -93,11 +92,23 @@ const TestPage = () => {
                                 {answer.answer}
                             </Cell>
                         ))}
-                    </form>
+                    </div>
                 </div>
-            ))}
+            )) : <>
+                <div className="HIJtihMA8FHczS02iWF5">
+                    <Placeholder
+                        header="Test do not have any questions"
+                    >
+                    <img
+                        alt="Telegram sticker"
+                        className="blt0jZBzpxuR4oDhJc8s"
+                        src="https://xelene.me/telegram.gif"
+                    />
+                    </Placeholder>
+                </div>
+            </>}
 
-            <Button
+            {testData && <Button
                 mode="gray"
                 size="m"
                 id={'question-submit'}
@@ -105,7 +116,7 @@ const TestPage = () => {
                 loading={loading}
             >
                 Submit Answers
-            </Button>
+            </Button>}
         </List>
     );
 }

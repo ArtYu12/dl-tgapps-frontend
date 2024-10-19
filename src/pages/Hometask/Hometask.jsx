@@ -43,9 +43,6 @@ const Hometask = () => {
         }
     };
 
-
-
-    console.log(homework)
     if(homework === null) return <Loader />
     return (
         <List>

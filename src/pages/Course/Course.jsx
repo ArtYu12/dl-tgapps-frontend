@@ -23,13 +23,11 @@ const Course = () => {
     const nav = useNavigate()
     const {id} = useParams()
 
-    const {courses} = useContext(UserContext)
-
     const [loading, setLoading] = useState(false)
 
     const [loadingStart, setLoadingStart] = useState(false)
 
-    const {user, setUser, fetchUser} = useContext(UserContext)
+    const {user, setUser, fetchUser, courses} = useContext(UserContext)
 
     const [course, setCourse] = useState(null);
     const [respStartSucc, setRespStartSucc] = useState(false)
@@ -104,7 +102,18 @@ const Course = () => {
         setCancalimSBT(response.data);
     }
 
-    const [coursesArray, setCourses] = useState(null)
+    /*const [coursesArray, setCourses] = useState(null)
+
+    async function getCourses() {
+        const response = await userAPI.getUserCourses();
+        if (response.success === false) {
+            return showNotification('Error', response.data.error, 'error');
+        }
+        setCourses(response.data.courses);
+    }
+
+    getCourses();
+    */
 
     useEffect(() => {
         if(!id) return 
@@ -114,23 +123,19 @@ const Course = () => {
                 return showNotification('Error', response.data.error, 'error');
             }
             setCourse(response.data.course);
-            setInUserData(courses.find(ob => String(ob.id) == String(id)))
         }
-        async function getCourses() {
-            const response = await userAPI.getUserCourses();
-            if (response.success === false) {
-                return showNotification('Error', response.data.error, 'error');
-            }
-            setCourses(response.data.courses);
-        }
-
-        getCourses();
-        getCoursesData();
+        
+        getCoursesData()
         handleGetModules()
         getCoursesDataMy()
-
         getClaimData()
-    }, [id, user]);
+    }, [id]);
+
+
+    useEffect(() => {
+        if(!user) return
+        setInUserData(courses.find(ob => String(ob.id) == String(id)))
+    }, [user])
 
     const handleStartCourse = async () => {
         setLoading(true)
@@ -142,6 +147,7 @@ const Course = () => {
             }
             await getCoursesDataMy()
             await fetchUser()
+            setInUserData(true)
             return showNotification('Success', "You have successfully statred a course", 'success');
         } catch (e) {
             console.log(e)
@@ -173,36 +179,11 @@ const Course = () => {
 
 
     const unfinishedModules = inUserList?.modules?.filter(mod => mod.finished) || [];
-        console.log(canClaimSBT);
 
     return (
         <div> 
-            <Back/>
+            <Back callback={() => nav("/courses")}/>
             <div className="container"> 
-                {/*<div className="home-task" style={{marginTop: "24px"}}> 
-                    <span className="page-title" style={{fontSize: "24px"}}>Hometask</span> 
- 
-                    <div className="tasks-block"> 
-                        <p className="desc-task">description description description description description description description description description description description description description description description description </p> 
- 
-                        <div className="testing-block"> 
-                            <input type="text"/> 
-                        </div> 
-                    </div> 
- 
-                    <Button 
-                        mode="bezeled" 
-                        size="m" 
-                        id={'Claim SBT'}
-                        loading
-                    > 
-                        Submit 
-                    </Button> 
-                </div> */}
-
-                
- 
- 
                 <div className="preview-course">
                     <img 
                         src={course?.image}

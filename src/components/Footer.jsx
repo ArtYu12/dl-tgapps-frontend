@@ -14,7 +14,7 @@ const Footer = ({active}) => {
 
     const {user} = useContext(UserContext)
     return (
-        <Tabbar className={'Tabbar'} style={{paddingBottom: "16px"}}>
+        <Tabbar className={'Tabbar'} style={{paddingBottom: "16px", zIndex:"1000000000"}}>
             <TabbarItem text="Home" style={{color:active == 1 ? "rgba(0, 122, 255, 1)" : ""}} className={'tab__item'+active === 1 ? "tab__item__active" : ""} onClick={() => nav("/")}>
                 <Icon20HomeOutline width={28} height={28} color={active == 1 ? "rgba(0, 122, 255, 1)" : ""}/>
             </TabbarItem>

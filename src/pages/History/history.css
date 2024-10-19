@@ -5,10 +5,6 @@
     color: var(--tgui--white);
 }
 
-.list-history{
-    height: 42vh;
-    overflow-y: auto;
-}
 
 .list-history .history-item {
     display: flex;

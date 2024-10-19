@@ -48,7 +48,7 @@ const History = () => {
 
     return (
         <div>
-            <div className="container">
+            <div className="container" style={{paddingBottom:"80px"}}>
                 <div className="first-block" style={{ marginTop: "24px" }}>
                     <Cell
                         before={<Avatar src={user?.photoBase64 ? user.photoBase64 : ""} acronym={user?.name?.charAt(0)}size={48} />}
@@ -90,7 +90,7 @@ const History = () => {
                     <div className="page-title">History</div>
 
                     {history === null ? (
-                        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "10px", zIndex:"1" }}>
                             <Skeleton visible={true} style={{ width: "100%", height: "50px", padding: "0 24px", borderRadius: "12px" }}></Skeleton>
                             <Skeleton visible={true} style={{ width: "100%", height: "50px", padding: "0 24px", borderRadius: "12px" }}></Skeleton>
                             <Skeleton visible={true} style={{ width: "100%", height: "50px", padding: "0 24px", borderRadius: "12px" }}></Skeleton>

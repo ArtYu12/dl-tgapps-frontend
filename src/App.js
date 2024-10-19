@@ -55,8 +55,10 @@ function App() {
     fetchUser() 
   }, []) 
  
+
+  console.log(user?.newUser)
   if(user == null) return <Loader /> 
-  if(user.newUser) return <OverviewBlocks />
+  if(user?.newUser) return <OverviewBlocks />
   return ( 
     <UserContext.Provider value={{ 
       user: user.user,
