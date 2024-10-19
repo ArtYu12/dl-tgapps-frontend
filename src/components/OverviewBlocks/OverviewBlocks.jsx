@@ -34,7 +34,7 @@ const OverviewBlocks = () => {
                         return prev - 1;
                     })}>
                 <Steps
-                    count={5}
+                    count={4}
                     progress={step}
                 />
             </div>
