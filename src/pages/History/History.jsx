@@ -115,13 +115,13 @@ const History = () => {
                                 }) : <>
                                     <div className="HIJtihMA8FHczS02iWF5">
                                         <Placeholder
-                                        header="Yout history is empty"
+                                            header="Yout history is empty"
                                         >
-                                        <img
-                                            alt="Telegram sticker"
-                                            className="blt0jZBzpxuR4oDhJc8s"
-                                            src="https://xelene.me/telegram.gif"
-                                        />
+                                            <img
+                                                alt="Telegram sticker"
+                                                className="blt0jZBzpxuR4oDhJc8s"
+                                                src="https://xelene.me/telegram.gif"
+                                            />
                                         </Placeholder>
                                     </div>
                                 </>}
